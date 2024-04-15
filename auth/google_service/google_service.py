@@ -3,6 +3,9 @@ from google.oauth2.credentials import Credentials
 import requests
 import jwt
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client_id = os.environ.get("GOOGLE_CLIENT_ID")
 client_secret = os.environ.get("GOOGLE_CLIENT_SECRET")

@@ -48,4 +48,4 @@ def get_table_data(table):
         return str(e), http.HTTPStatus.INTERNAL_SERVER_ERROR
 
 if __name__ == '__main__':
-    server.run(host='0.0.0.0', debug=True, port=8080)
+    server.run(host='0.0.0.0', debug=True, port=8081)

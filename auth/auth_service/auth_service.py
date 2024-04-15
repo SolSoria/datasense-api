@@ -4,6 +4,9 @@ from bson import ObjectId
 import certifi
 import jwt
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 secret_key = os.environ.get('SECRET_KEY')
 connectionUrl = os.environ.get('MONGO_URL')
