@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: datasense-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.ip/proxy-body-size: "0"
+    nginx.ingress.kubernetes.ip/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.ip/proxy-send-timeout: "600"
+spec:
+  rules:
+    - host: datasense-project.com
+      http:
+        paths:
+          - path: /finder/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: finder
+                port:
+                  number: 5000
+          - path: /vectorizer/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: vectorizer
+                port:
+                  number: 5000
+          - path: /auth/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: auth
+                port:
+                  number: 5000

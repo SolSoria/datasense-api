@@ -1,0 +1,7 @@
+**/env/
+**/__pycache__/
+**/downloads/
+**/credentials.json
+**/.env
+.DS_Store
+**/secret.yaml

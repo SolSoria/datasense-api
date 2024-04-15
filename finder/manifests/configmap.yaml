@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: finder-configmap
+data:
+  MONGO_DB_NAME: dts
+  CREDENTIALS_FILE_PATH: pubsub/credentials.json
+  PROJECT_ID: dev-gd-classifier-v1
+  FILES_TO_DOWNLOAD_TOPIC_ID: files-to-download
+  AUTH_URL: auth:5000

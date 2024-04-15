@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: downloader
+  labels:
+    app: downloader
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: downloader
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: downloader
+    spec:
+      containers:
+      - name: downloader
+        image: solsoria/downloader:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: downloader-configmap
+        - secretRef:
+            name: downloader-secret
+        

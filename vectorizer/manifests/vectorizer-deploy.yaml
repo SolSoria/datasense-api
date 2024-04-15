@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vectorizer
+  labels:
+    app: vectorizer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vectorizer
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: vectorizer
+    spec:
+      containers:
+      - name: vectorizer
+        image: solsoria/vectorizer:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: vectorizer-configmap
+        - secretRef:
+            name: vectorizer-secret
+        

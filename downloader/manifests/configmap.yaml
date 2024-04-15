@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: downloader-configmap
+data:
+  PROJECT_ID: dev-gd-classifier-v1
+  SUBSCRIPTION_ID: files-to-download-sub
+  FILES_TO_CLASSIFY_TOPIC_ID: files-to-classify
+  CREDENTIALS_FILE_PATH: pubsub/credentials.json
+  AUTH_URL: auth:5000
+  VECTORIZER_URL: vectorizer:5000

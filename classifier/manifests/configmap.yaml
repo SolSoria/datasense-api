@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: classifier-configmap
+data:
+  MONGO_DB_NAME: dts
+  GOOGLE_REDIRECT_URI: http://localhost:3000/oauth2
+  CREDENTIALS_FILE_PATH: cloud_storage/credentials.json
+  PROJECT_ID: dev-gd-classifier-v1
+  SUBSCRIPTION_ID: files-to-classify-sub

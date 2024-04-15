@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finder
+  labels:
+    app: finder
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: finder
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: finder
+    spec:
+      containers:
+      - name: finder
+        image: solsoria/finder:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: finder-configmap
+        - secretRef:
+            name: finder-secret
+        
